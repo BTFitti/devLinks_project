@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Input } from "../../components/input";
 import { Link, useNavigate } from "react-router-dom";
+import {auth} from '../../services/firebaseConnection'
 export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
