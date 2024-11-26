@@ -20,7 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-//o getAuth pede qual tipo de serviço do firebase eu vou inicializar
+//o getAuth pede qual tipo de serviço do firebase eu vou inicializar, que no caso é a conexão com o banco.
 const auth = getAuth(app)
 const db = getFirestore(app)
 

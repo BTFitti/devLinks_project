@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Input } from "../../components/input";
 import { Link, useNavigate } from "react-router-dom";
 import {auth} from '../../services/firebaseConnection'
+import { signInWithEmailAndPassword } from "firebase/auth";
 export function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -9,7 +10,21 @@ export function Login() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    navigate("/admin");
+    if(email === ''|| password === ''){
+      alert("Preencha os campos")
+      return;
+    }
+    //esse método de login recebe 3 parâmetros, a conexão com o firebase (auth), o email e a senha
+    signInWithEmailAndPassword(auth, email, password)
+    .then(()=>{
+      navigate("/admin", {replace: true});
+
+    })
+    .catch((error)=>{
+      console.log(error);
+      setEmail("")
+      setPassword("")
+    })
   }
   return (
     <div className="flex w-full h-screen items-center justify-center flex-col">
@@ -24,7 +39,7 @@ export function Login() {
       {/* Ativando o display flex, os elementos dentro do form pegam a largura de 100% */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-xl flex flex-col px-"
+        className="w-full max-w-xl flex flex-col px-1"
       >
         <Input
           placeholder="Digite seu email"
@@ -40,7 +55,7 @@ export function Login() {
         />
         <button
           type="submit"
-          className="h-11 bg-gradient-to-tl from-sky-800 to-emerald-300 rounded-lg border-0 text-xl p-1 font-medium text-white "
+          className="h-11 bg-gradient-to-r from-sky-800 to-emerald-300 rounded-lg border-0 text-xl p-1 font-medium text-white "
         >
           Acessar
         </button>
