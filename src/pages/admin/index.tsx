@@ -1,11 +1,7 @@
 export function Admin() {
   return (
-    <main>
-      <header>
-        <span>Home</span>
-        <span>Links</span>
-        <span>Redes sociais</span>
-      </header>
-    </main>
+    <div>
+      <h1>Pagina Admin</h1>
+    </div>
   );
 }
