@@ -30,7 +30,8 @@ export function Private({children}: PrivateProps): any{
         }
     },[])
     if(loading){
-        return <div><h1>Carregando</h1></div>
+     return <div><h1>Carregando</h1></div>
+    
     }
     if(!signed){
         return <Navigate to="/login"/>
