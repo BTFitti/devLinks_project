@@ -60,18 +60,21 @@ export function Home() {
   },[])
  
   return (
-    <div className="flex flex-col w-full py-4 items-center justify-center ">
-      <h1 className="md:text-4xl text-3xl font-bold text-white  mt-20">
+    <div className="flex flex-col w-full py-4 items-center justify-center font-home">
+      <div className="mb-4 mt-20 ">
+        <img src="/src/assets/bruno.jpg" alt="My picture" className="rounded-full object-cover w-24 h-24 shadow-md shadow-black/60 "/>
+      </div>
+      
+      <h1 className="md:text-4xl text-3xl font-bold text-white ">
         Bruno Fitti
       </h1>
-      <span className="text-gray-50 mb-5 mt-3">Veja meus links 👇</span>
 
-      <main className="flex flex-col w-11/12 max-w-xl text-center">
+      <main className="flex flex-col w-11/12 max-w-xl text-center mt-10">
       
       {links.map((item)=>(
         <section
         key={item.id}
-        className="mb-4 w-full py-2 rounded-lg select-none transition duration-500 hover:scale-105 font-medium "
+        className="  mb-4 w-full py-2 rounded-md select-none transition duration-300 hover:scale-105 font-medium shadow-md shadow-gray-700"
         style={{background: item.bg}}
         >
         <a href={item.url} target="_blank" >
@@ -82,10 +85,10 @@ export function Home() {
         
 
         {socialLinks && Object.keys(socialLinks).length > 0 &&(
-          <footer className="flex justify-center gap-3 my-4  ">
+          <footer className="flex justify-center gap-3 my-4">
 
           <Social url={socialLinks?.github}>
-            <FaGithub  size={35} color="#fff" />
+            <FaGithub  size={35} color="#fff"/>
           </Social>
           <Social url={socialLinks?.linkedin}>
             <FaLinkedin size={35} color="#fff"/>

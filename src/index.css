@@ -3,5 +3,5 @@
 @tailwind utilities;
 body{
     min-height: 100vh;
-    background: linear-gradient(#232630, #050507);
+    background: linear-gradient( #94A3B8, rgb(74, 74, 94));
 }
