@@ -5,7 +5,7 @@ import { FiTrash } from "react-icons/fi";
 import { addDoc, collection, onSnapshot, query, orderBy, doc,deleteDoc } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 
-interface LinkProps{
+export interface LinkProps {
   id: string;
   name: string
   url: string
@@ -66,6 +66,10 @@ export function Admin() {
     .catch((error)=>{
       console.log("Erro ao cadastrar no banco" + error);
     })
+  }
+  async function handleDeleteLink(id:string){
+    const docRef = doc(db, "links", id)
+    await deleteDoc(docRef)
   }
 
   return (
@@ -131,19 +135,24 @@ export function Admin() {
       </form>
       
         <h1 className="text-4xl font-bold text-white mb-4">Meus links</h1>
+        {links.map((item)=>(
+          
         <article 
+        key={item.id}
         className="flex items-center justify-between w-11/12 max-w-xl py-3 px-2 rounded-md mb-2 select-none"
-        style={{background: bgColorInput, color: textColorInput}}
+        style={{background: item.bg , color: item.color}}
         >
-          <p>{nameInput}</p>
+          <p>{item.name}</p>
           <div>
             <button
               className="border border-dashed p-1 rounded bg-neutral-900"
+              onClick={()=> handleDeleteLink(item.id)}
             >
-              <FiTrash size={19} color="#fff"/>
+              <FiTrash size={20} color="#fff"/>
             </button>
           </div>
         </article>
+        ))}
         
     </div>
   );
