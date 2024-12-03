@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import { Input } from "../../components/input";
 import { db } from "../../services/firebaseConnection";
@@ -8,7 +8,26 @@ export function Networks(){
     const [facebook, setFacebook] = useState("")
     const [instagram, setInstagram] = useState("")
     const [youtube, setYoutube] = useState("")
-    
+
+    //criando o useEffect para buscar uma unica vez do BD os itens da coleção
+    useEffect(()=>{
+        function loadLinks(){
+            //criando a referencia no banco para armazenar nessa variável e depois realizar a busca.
+            const docRef = doc(db,"social","link")
+            getDoc(docRef)
+            .then((snapshot)=>{
+                if(snapshot.data() !== undefined){
+                    //passo a interrogação porque pode ser que não tenha nada quando acessarmos as useStates
+                    setFacebook(snapshot.data()?.facebook)
+                    setInstagram(snapshot.data()?.instagram)
+                    setYoutube(snapshot.data()?.youtube)
+                }
+
+            })
+        }
+        loadLinks()
+    },[])
+
     function handleRegister(e: FormEvent){
         e.preventDefault();
         setDoc(doc(db, "social", "link"),{
