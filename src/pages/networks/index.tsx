@@ -5,9 +5,9 @@ import { db } from "../../services/firebaseConnection";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 
 export function Networks(){
-    const [facebook, setFacebook] = useState("")
+    const [github, setGithub] = useState("")
     const [instagram, setInstagram] = useState("")
-    const [youtube, setYoutube] = useState("")
+    const [linkedin, setLinkedin] = useState("")
 
     //criando o useEffect para buscar uma unica vez do BD os itens da coleção
     useEffect(()=>{
@@ -18,11 +18,10 @@ export function Networks(){
             .then((snapshot)=>{
                 if(snapshot.data() !== undefined){
                     //passo a interrogação porque pode ser que não tenha nada quando acessarmos as useStates
-                    setFacebook(snapshot.data()?.facebook)
+                    setGithub(snapshot.data()?.github)
                     setInstagram(snapshot.data()?.instagram)
-                    setYoutube(snapshot.data()?.youtube)
+                    setLinkedin(snapshot.data()?.linkedin)
                 }
-
             })
         }
         loadLinks()
@@ -31,9 +30,9 @@ export function Networks(){
     function handleRegister(e: FormEvent){
         e.preventDefault();
         setDoc(doc(db, "social", "link"),{
-            facebook: facebook,
+            github: github,
             instagram: instagram,
-            youtube: youtube,
+            linkedin: linkedin,
         })
         .then(()=>{
             
@@ -48,12 +47,12 @@ export function Networks(){
             <Header/>
             <h1 className="text-white text-2xl font-medium mt-8 mb-4">Minhas redes sociais</h1>
             <form className="flex flex-col max-w-xl w-full" onSubmit={handleRegister}>
-                <label className="text-white font-medium my-2">Link do Facebook</label>
+                <label className="text-white font-medium my-2">Link do Github</label>
                 <Input
                     type="url"
-                    placeholder="Digte a url do facebook..."
-                    value={facebook}
-                    onChange={(e) => setFacebook(e.target.value)}
+                    placeholder="Digte a url do github..."
+                    value={github}
+                    onChange={(e) => setGithub(e.target.value)}
                 />
                 <label className="text-white font-medium my-2">Link do Instagram</label>
                 <Input
@@ -62,12 +61,12 @@ export function Networks(){
                     value={instagram}
                     onChange={(e) => setInstagram(e.target.value)}
                 />
-                <label className="text-white font-medium my-2">Link do Youtube</label>
+                <label className="text-white font-medium my-2">Link do linkedin</label>
                 <Input
                     type="url"
-                    placeholder="Digte a url do youtube..."
-                    value={youtube}
-                    onChange={(e) => setYoutube(e.target.value)}
+                    placeholder="Digte a url do linkedin..."
+                    value={linkedin}
+                    onChange={(e) => setLinkedin(e.target.value)}
                 />
                 <button 
                 type="submit"
