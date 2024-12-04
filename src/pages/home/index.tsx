@@ -62,7 +62,7 @@ export function Home() {
   return (
     <div className="flex flex-col w-full py-4 items-center justify-center font-home">
       <div className="mb-4 mt-20 ">
-        <img src="/src/bruno.jpg" alt="My picture" className="rounded-full object-cover w-24 h-24 shadow-md shadow-black/60 "/>
+        <img src="/src/eu.jfif" alt="My picture" className="rounded-full object-cover w-24 h-24 shadow-md shadow-black/60 "/>
       </div>
       
       <h1 className="md:text-4xl text-3xl font-bold text-white ">
