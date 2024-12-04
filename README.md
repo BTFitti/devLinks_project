@@ -5,5 +5,6 @@ Este projeto é inspirado no LinkTree onde eu apresento alguns links profissiona
 - Estilização: Tailwind CSS
 - Rotas: React Router DOM
 - Backend: Firebase
+## Você pode acessar através desse [link](https://fitti-links.vercel.app/)
 ## Autor
 Bruno Tommaso Fitti
