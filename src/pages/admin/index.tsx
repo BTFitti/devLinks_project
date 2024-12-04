@@ -13,6 +13,7 @@ export interface LinkProps {
   color: string
 }
 
+
 export function Admin() {
   const [nameInput, setNameInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
@@ -127,7 +128,6 @@ export function Admin() {
             </article>
             </div>
           )}
-        
 
         <button type="submit" className=" mb-7 bg-blue-500 p-2 text-white font-medium rounded-md h-11">
           Cadastrar🔗
