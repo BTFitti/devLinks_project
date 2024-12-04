@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, useState } from "react"
+import { InputHTMLAttributes} from "react"
 //A tipagem InputProps está extendendo todas as propriedades que o tipo input recebe.
 
 /*
