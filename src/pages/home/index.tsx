@@ -69,7 +69,7 @@ export function Home() {
         Bruno Fitti
       </h1>
 
-      <main className="flex flex-col w-11/12 max-w-xl text-center mt-10">
+      <main className="flex flex-col w-11/12 max-w-xl text-center mt-10 bg-white/20 pt-2 pb-10 px-2 rounded-xl">
       
       {links.map((item)=>(
         <section
